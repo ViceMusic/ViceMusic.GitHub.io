@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="最基本的sql语句(不包含原理仅限于操作)（1）sql语言分类：DQL（数据库查询语言）selectDML（数据库操作语言）update delete insertDDL（数据设计语言）create drop alter（对表的增删改查？）TCL（事务控制语言）commit rollbackDCL（数据权限控制）grant授权 revoke撤销权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/07/03/operations/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最基本的sql语句(不包含原理仅限于操作)（1）sql语言分类：DQL（数据库查询语言）selectDML（数据库操作语言）update delete insertDDL（数据设计语言）create drop alter（对表的增删改查？）TCL（事务控制语言）commit rollbackDCL（数据权限控制）grant授权 revoke撤销权限">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\98175\AppData\Roaming\Typora\typora-user-images\image-20230614201545246.png">
+<meta property="og:image" content="c:\Users\98175\AppData\Roaming\Typora\typora-user-images\image-20230614201804976.png">
+<meta property="article:published_time" content="2023-07-03T02:41:56.000Z">
+<meta property="article:modified_time" content="2023-07-03T02:43:17.899Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\98175\AppData\Roaming\Typora\typora-user-images\image-20230614201545246.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="mysql title: operations-operations" class="h-entry article article-type-mysql title: operations" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/03/operations/" class="article-date">
+  <time class="dt-published" datetime="2023-07-03T02:41:56.000Z" itemprop="datePublished">2023-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="最基本的sql语句-不包含原理仅限于操作"><a href="#最基本的sql语句-不包含原理仅限于操作" class="headerlink" title="最基本的sql语句(不包含原理仅限于操作)"></a>最基本的sql语句(不包含原理仅限于操作)</h1><p><strong>（1）sql语言分类：</strong><br>DQL（数据库查询语言）select<br>DML（数据库操作语言）update delete insert<br>DDL（数据设计语言）create drop alter（对表的增删改查？）<br>TCL（事务控制语言）commit rollback<br>DCL（数据权限控制）grant授权 revoke撤销权限</p>
+<span id="more"></span>
+
+<p><strong>（2）常用指令</strong><br>1.数据库的操作<br>2.查询语句中常用的<br>select * from table，从数据库中查询所有字段<br>select a,b form table  从数据库中查询ab两个字段<br>select  a*10 from table   数据库中查询a字段并且将返回结果✖10<br>select a as unbbr from table   &#x2F; select a ‘unbbr’ from table;   从数据库里面查询a字段并且把a字段显示为unbbr</p>
+<p>条件查询  关键字where，里面有很多逻辑符号<br>select  *  from table where id &#x3D;1      从数据库中查询所有字段里面 id字段为1的数据<br>select * from table where id between 1 to 10  从数据库里面查询id为1到10之间的数据<br>select * from table where id is null&#x2F;is not null   从数据库里查询id为空或者id不是空的数据<br>select * from table where id in （1，2，3）&#x2F; not in （1，2，3）   从数据库里查询id为1，2，3或者id不是1，2，3其中一个的数据<br>（<em>这个in的比较里面最好不要有null</em>）<br>模糊查询 关键词like 类似正则匹配，**%代表任意个字符 _代表某个字符**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如  &#x27;_&#x27;代表任意一个字符   &#x27;_%&#x27;大于等于一个字符</span><br></pre></td></tr></table></figure>
+
+<p>select * from table whiere id like ‘%3’  查询数据库中，id末尾数字为3的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模糊查询中还有个转义字符设置,转义字符后面的字符将是原本的含义</span><br><span class="line">select * from table whiere id like &#x27;%\%3&#x27; escape &#x27;\&#x27;  查询数据库中，id末尾为&quot;%3&quot;的数据</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查询结果排序<br>select * from table order by id asc，name desc；先按id升序的顺序排列，如果id相等，就按name降序排列<br>一般默认是按升序排列的（asc强制升序，desc强制降序）<br>上述的综合应用select * from human where name &gt; 1 order by id desc;查找所有名字大于一，按id降序进行排列</p>
+<p>单行处理函数<br>substr(target,start,length)截取长度<br>trim(target)去掉末尾空格<br>Ifnull（target，value）如果输入的是null，那么结果就会显示成value<br>IF（bool，a，b） 类似三元运算式子的原理</p>
+<p>多行处理函数：<br>多行处理函数的处理效果就是多个数据形成一个结果<br>max（）最大值<br>min（）最小值<br>sum（）总和<br>avg（）平均<br>count（）查询<strong>不是null</strong>的记录数目</p>
+<p>关于分组语句group by和having的使用<br>（1）group by 分组依据，如果分组依据相同，就会被分成不同的组<br>此时对于多行处理函数的操作就是按组来。如果不写group by，整张表就会使为一组<br>（2）group by a,b;分组依据可以是多个，例如ab都对应相等的数据才会被分成一组<br>（3）只有在分组进行之后，才能使用分组函数（很重要，详见执行顺序）<br>（4）如果使用了group by语句，select就只能展示分组依据和分组函数了，不能展示别的字段，因为没有意义也可能报错<br>（5）having的用法类似where，但是这个是和group by高度连用的，可以使用分组函数，起到一个最后筛选的作用<br>举例子<br>select address max(id) from table group by address having max（id）&gt;30;   按照address为分组依据，寻找每个组中最大的id，并且只展示其中大于30的</p>
+<p><strong>查询语句的汇总：</strong><br><strong>（1）书写顺序</strong><br><strong>select—–   from—– where—-  group(having)—–  order</strong><br><strong>(2)执行顺序</strong><br><strong>from—— where—– group(having)—- select——-order</strong><br><strong>(比如为什么where的时候不能用分组函数，因为还没开始分组，你就算没写也是where之后才把整张表当成一组的)</strong></p>
+<h4 id="关于表的关联查询"><a href="#关于表的关联查询" class="headerlink" title="关于表的关联查询"></a>关于表的关联查询</h4><p>1.关联查询的方法同样是用（逗号）进行连接<br>注意这种查询方法是不可行的，会造成字段模糊，不知道去哪找什么<br>select  name, name from human, iden;<br>像结构体一样，尽量指明这个字段来自什么表—human.name</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select human.name,iden.name from human,iden;</span><br></pre></td></tr></table></figure>
+
+<p>2.关于笛卡尔积问题<br>关联查询的时候，原理是a表中的数据在b表中寻找对应，如果没有条件，就会查询出n*m条数据<br>尽量使用条件查询，举例查询人事表中 部门id和工资表中对应id相等的(关联字段？)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select human.name,iden.name from human,iden where human.departid=iden.name;</span><br></pre></td></tr></table></figure>
+
+<p>表娶个别名也行（常用操作）<br>select  h.n,i.sal from human h,iden i where  h.departid&#x3D;i.name;<br>3.链接的分类<br>（1）内连接<br>         1.等值连接（，或者join on语法,<strong>一般常用join on的语法,这是最常用的99语法</strong>）<br>                <code>sql92： select  h.n,i.sal from human h,iden i where  h.departid=i.name;</code><br>                <code>sql99：select  h.n,i.sal from human h join iden i on  h.departid=i.name;</code><br>                99语法在选择表的时候，把，改成  a join b ，on语法，on后面添加连接条件，可以再添加where<br>                这样的写法，h.departid&#x3D;i.name是等值（链接）条件，99语法可以再单独写where的筛选条件，让结构更加清晰<br>                92会写到一起<br>                另外为了可读性，可以加上inner关键字select  h.n,i.sal from human h inner join iden i on  h.departid&#x3D;i.name;<br>         2.非等值链接（就是把on后面换成不是等于的条件呗）<br>         3.自链接：其实就是把一张表当成两张表看<br>                +——+——+——+<br>                 | id   | name | mgr  |<br>                +——+——+——+<br>                | 1234 | mike | 1235 |<br>                | 1235 | tiga | 1236 |<br>              +——+——+——</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.name as &quot;employee&quot;,b.name as &quot;employer&quot; from department a inner join department b on a.mgr=b.id;</span><br></pre></td></tr></table></figure>
+
+<p>（2）外链接<br>        外连接需要的是关键字left和right，他给两个表之间分了主次关系，主表必须展示全<br>         1.左外连接 ：  <code>h.name,i.salary from human h left join iden i on  h.departid=i.name;</code><br>          认为左侧是主表，把左侧数据全都列出，然后匹配另一个表，如果有匹配不上的，就显示null<br>         2.右外连接 ： <code>h.name,i.salary from human h right join iden i on  h.departid=i.name;</code><br>         认为右侧是主表，把右侧数据全都列出，然后匹配另一个表，如果有匹配不上的，就显示null<br>（3）全连接（不讲了）</p>
+<p>   (4)   自然连接(补充内容)</p>
+<p>​         自然连接的语法为,其中自然连接的要求是A B中同名同类型的字段会被归一 </p>
+<p>​         其实就是自动帮我们完成了a.id&#x3D;b.id这种操作</p>
+<p>​         以及,多个表自然连接的时候要注意顺序,比如可能A和C表中都有id但是完全不是一个意思</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A natural join B    A自然链接B</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.多张表的连接方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from           （a关联b，a也关联c）</span><br><span class="line">  a</span><br><span class="line">     join   b</span><br><span class="line">     on    //a和b的关联关系</span><br><span class="line">    join   c</span><br><span class="line">     on    //a和c的关联关系</span><br></pre></td></tr></table></figure>
+
+<p>  也可以是这样子顺着的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from</span><br><span class="line">   a             （a关联b关联c）</span><br><span class="line">      join   b</span><br><span class="line">      on    //a和b的关联关系</span><br><span class="line">     join   c</span><br><span class="line">      on    //b和c的关联关系</span><br></pre></td></tr></table></figure>
+
+<p>其实无论是何种链接，都可以把表视为集合，把数据视为元素，链接就是确定了一批元素，再按着条件找下一批<br>其实就是笛卡尔积的连接方式，所以说学好离散很重要</p>
+<h6 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h6><p>1.子查询的概念就是select语言里面还包含select语句，这个被嵌套的部分就叫子查询语句</p>
+<p>2.where中出现子查询：其实就是一个嵌套的过程<br>        举个例子   <code>select min(salary) from iden;  以及  select name,salary from iden where salary &gt;1000;</code><br>        可以合并成为    <code>select name,salary from iden where salary &gt; (select min(salary) from iden);</code></p>
+<p> 3.from中的总查询，可以把查询结果视为一个延申表（derive table），而且这个延申表也要取名字<br>       举个例子 <code>select min(salary) from (select salary from iden where salary&gt;1000) a  ;</code></p>
+<p>4.select后面出现子查询语句（了解即可）</p>
+<h6 id="两个表的交集-并集-减法"><a href="#两个表的交集-并集-减法" class="headerlink" title="两个表的交集,并集,减法"></a>两个表的交集,并集,减法</h6><p><strong>并集操作union</strong><br>对于表连接来说，union可以减少匹配的次数，并且完成两个查询结果集的拼接<br>一般的连接方式是笛卡尔积的乘法，union的方法可以减少查询次数<br>select * from human where address&#x3D;12<br>union<br>select * from human where address&#x3D;22;<br>另外注意进行合并的时候要保证结果集的格式一样<br>（mysql只需要列数一致，oracle则更严格一点）</p>
+<p>limit用法，常在分页查询里面使用<br> select * from human order by id limit 0,3;<br>limit要放在order后面才能使用，第一个参数为起始点，第二个参数为长度</p>
+<p><strong>交集操作 intersect</strong></p>
+<p><strong>减法操作except&#x2F;minus</strong></p>
+<p>(注意:上面三种集合操作,都是自动去重的,符合和关系代数中的操作)</p>
+<h6 id="数据的增删改"><a href="#数据的增删改" class="headerlink" title="数据的增删改"></a>数据的增删改</h6><p>DML语句<br><strong>1.insert插入数据</strong><br>insert into table(column1,column2,…..) value(value1,value2,………)<br>字段和值的数目要对应，数据类型要对应<br>如果省略字段名，则value里面必须写全了才行<br>另外插入多个数据的时候，后面记得要跟上values(value1,value2,………)，(value1,value2,………)，(value1,value2,………)</p>
+<p>另外关于date类型的插入，不能直接插入字符串，但是可以用str_to_date（str，dateFormat）函数<br>mysql的日期格式为 %Y %m %d %h %i %s 年月日时分秒<br><strong>（注意年必须是大号的Y）</strong><br>比如  value的数值可以写成：str_to_date（’29-01-1990’,’%d-%m-%Y’）<br>如果日期格式写成年月日，就会自动类型转换，注意加上连字符！<br>例如： insert into feast values(‘newyear’,str_to_date(‘01-12-1990’,’%d-%m-%Y’));</p>
+<p>还有展示的时候date_format类型，一般用在查询里面，把日期类型转化为我们想要的字符串形式<br>例如mysql&gt; select name,date_format(time,’%m–%d’) from feast;<br>展示效果就是月份和日期<br>这里注意一点，str_to_date和date_fromat本质上都是类似正则匹配的东西，连字符啥的不是很重要</p>
+<p>最后一个date和datetime的区别是，date是年月日，datetime是长时间年月日时分秒</p>
+<p><strong>2.update，对数据进行修改</strong><br>update 表名字 set 值名字&#x3D;value1，。。。 where</p>
+<p><strong>3.delete,删除列</strong></p>
+<p>delete from 表名 where；<br>delete的原理是删除数据，但是不删除当前存在的空间，这就代表效率慢，但是可以回滚<br>如果想连着分配的内存一起删除，就要用truncate语句来替代delete</p>
+<p>truncate table tablename where。。。。。;<br>truncate的原理是删除空间，速度快但是不能回滚，使用之前一定要问问客户<br>truncate是DDL语句，但不是删除表整体，删除表整体是drop  drop table tablename；</p>
+<p><strong>4.关于insert插入多条数据：</strong><br>nsert into feast(字段) value<strong>s</strong>(1),(2),……;</p>
+<p><strong>5.快速复制一个表，使用as关键字</strong><br>create table emp2 as select * from emp;<br>&#x2F;&#x2F;原理为把查询结果插入一张新的表<br>另一种很少用的方法，要求表存在而且于插入数据的规格对齐<br>insert into emp2 select * from emp；</p>
+<h4 id="表的增加和删除"><a href="#表的增加和删除" class="headerlink" title="表的增加和删除"></a>表的增加和删除</h4><p>Create table；<br>建表属于ddl语言（create）<br><strong>1.创建表</strong><br>create table 表名（字段名字  数据类型 约束,字段名字  数据类型 约束,…………..最后的约束集合约束）<br>关于数据类型：<br>    varchar    长度可变字符串，根据传入的长度动态分配长度（最长255）<br>    char         长度是固定的，速度快一点，但是容易造成空间浪费<br>                    —-上面的两个根据实际情况选择<br>    int           整形，就是int<br>    bigint      整形，就是long<br>    float         单精度浮点数<br>    double     双精度浮点数据<br>    date           短日期<br>    datetime    长日期类型<br>    clob      字符大对象，最多存储4g大小的字符串，存一些文章之类的<br>    blob      二进制大对象 ，存储图片声音之类的。。。插入的时候需要流</p>
+<p><strong>2.删除表</strong> drop table 表名字<br>例如drop table t_student;<br>还有drop table if exist<strong>s</strong> t_student;&#x2F;&#x2F;防止报错了就是</p>
+<p><strong>3.对于表结构的增删改</strong></p>
+<p>desc <tablename>;展示表的字段信息</p>
+<p>alter <tablename> add <columnName> (表的类型和长度,约束)           新增字段</p>
+<p>alter <tablename> alter <column columnName> (原类型,新长度)          修改字段长度</p>
+<p>注意这个只能是修改字段的长度,因为里面如果有数据就不行</p>
+<p>alter tablename drop column columnName                                    删除列</p>
+<h4 id="约束的建立"><a href="#约束的建立" class="headerlink" title="约束的建立"></a>约束的建立</h4><p>创建表的时候添加约束constraint？<br>1.约束的定义：对字段添加，并且对输入的数据进行限制<br> 2.常见的约束：非空not null，唯一unique，主键primary key，外键forgein key，检查check（mysql不支持）<br>3.(1)not null<br>  使用方式就是在创建表的时候直接加上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table tablename(name varchar(255) not null,............);</span><br></pre></td></tr></table></figure>
+
+<p> (2)unique</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table tablename(name varchar(255) unique,............);</span><br></pre></td></tr></table></figure>
+
+<p>数值不能一致，但是可以都为null，在navicat里面的使用方式不太一样<br>让两个字段拥有联合唯一性的办法是:不单独添加约束，在末尾进行联合约束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table tablename(</span><br><span class="line">                    name varchar(255) ,</span><br><span class="line">                    id varchar(255),</span><br><span class="line">                    ...........  ,</span><br><span class="line">                    unique(name,id)  );</span><br></pre></td></tr></table></figure>
+
+<p>这东西也叫<strong>表级约束</strong>,就是批量添加约束，not null就没有这个功能。。。</p>
+<p>对单个字段添加约束的时候也可以一起用，比如 name varchar unique not all；这样的话就会自动形成主键（在mysql里面）</p>
+<p>（3）主键约束<br>             1.主键字段：加了主键约束的字段<br>             2.主键值：主键字段中的每一个数值<br>             主键用来区分每一条数据，就类似重名的人的身份证，<br>             理论上每个表都应该有主键，没有主键字段的表是不合法的<br>             <strong>主键的特征就是not null+unique</strong><br>             主键的添加方法和上面两个是一样的<br>        主键同样可以进行表级约束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table tablename(</span><br><span class="line">                    name varchar(255) ,</span><br><span class="line">                    id varchar(255),</span><br><span class="line">                    ........... ,</span><br><span class="line">                    primary key(name,id)  );</span><br></pre></td></tr></table></figure>
+
+
+<p>​       实际开发中不建议使用这种复合组件，主键值就类似身份证，单独设置一个主键字段即可，其他的没啥必要<br>​<br>​       主键的数目只有一个；</p>
+<p>（4） 关于外键约束foregin key<br>          相关术语：外键字段，外键值<br>          举个例子，两张表，一个存学生（学生的基础信息和班级号） ，一个存班级（班级号和班级信息）<br>          如果想让学生表中的班级号，被严格限制在班级表的班级号种类中，就要添加外键约束，我们俗称学生表为孩子表，班级表为父表<br>          外键约束的添加方法，一般是在创建子表的时候一起链接<br>          create table employee(<br>                                         id int primary key，<br>                                         name varchar(255),<br>                                         work int,<br>                                         <code>foreign key(id) references iden(id)</code><br>                                  );</p>
+<p>这个就是字段添加了，第一个括号里是要建立外键的字段，第二个是某个表中的某个字段作为父列</p>
+<p><strong>foreign key(子表要建立外键的字段) references 父表名字(父亲表中被当成外键的字段)</strong></p>
+<pre><code>       注意作为父列的字段必须是有索引的！一般来说我们都把父列字段设置为主键，这样mysql就会自动给他添加上一个索引（很重要）
+       （其实主要是必须有唯一性的关系）
+</code></pre>
+<p> (5)check</p>
+<p>check其实是一个插入时候的条件限制,比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Persons</span><br><span class="line">(</span><br><span class="line">P_Id int NOT NULL,</span><br><span class="line">CHECK (P_Id&gt;0)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>mysql并不是特别支持偏向使用这种东西…..就这样呗</p>
+<h4 id="内存引擎"><a href="#内存引擎" class="headerlink" title="内存引擎"></a>内存引擎</h4><p>关于存储引擎：（面试的终点）<br>存储引擎是mysql特有属性，oracle中有类似的但是不太一样，实际上是表存储数据组织数据的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table 表名;</span><br></pre></td></tr></table></figure>
+
+<p>建表语句可以展示出</p>
+<p>可以在创建表的最末尾使用engine&#x3D;xxx来制定存储引擎<br>show engines \G;也可以展示当前所有的数据库<br>InnorDB 支持事务，而且支持崩溃以后还能恢复，安全；也是mysql默认的存储引擎；但是效率不高，别的也属实有点一般了<br>MEMORY：内存存储引擎？（断电消失嗨嗨嗨）</p>
+<h4 id="关于事务的处理"><a href="#关于事务的处理" class="headerlink" title="关于事务的处理"></a>关于事务的处理</h4><p>关于业务是个什么铸币东西<br>与事务有关的只有DML语句，因为只有这三个语句是对数据进行增删改的。<br>事务机制可以类比一下平时画画的时候，用到的撤回操作。很明显的，save以后就无法撤回了。这就是提交和回滚。<br>事务可以让多条语句同时提交保存，或者同时回滚多条语句。</p>
+<p>事务的实现原理：InnorDB提供了记录事务性活动的日志文件</p>
+<p>事务开始<br>insert。。。<br>insert。。。。<br>事务结束</p>
+<p>这个日志文件里记录着你的所有DML操作<br>commit代表事务结束，清空日志，并且把日志内容持久化保存<br>rooback代表事务结束，清空日志，但不会把日志内容持久化保存起来，就是撤回了</p>
+<p>另外mysql中默认支持自动commit事务的，这一点可以在jdbc里面手动修改<br>每执行一次就自动commit一次，这就是为什么回滚没用；<br>在纯纯的mysql中，我们的处理方法是先表明开启事务 <code>start transaction；</code><br>然后再执行sql语句，之后就需要手动<code>commit</code>或者手动<code>rollback</code>；</p>
+<h4 id="事务的隔离等级"><a href="#事务的隔离等级" class="headerlink" title="事务的隔离等级"></a>事务的隔离等级</h4><p><code>transaction</code>(事务)<br>事务有四种隔离等级，这个隔离等级指的是，在进行并发访问的时候，读取到数据的多少<br>注意，测试的时候尽量让两个事务全都关闭自动提交，会更加明显一点<br>1.<code>read uncommitted</code>：可以读取非提交的内容<br>例如事务a，刚刚完成了一个DML操作但是还没有commit，这个时候另一个事务b是可以select到这个数据的<br>几乎可以认为是没有任何隔离，完全同步</p>
+<p>2.<code>read committed</code>：读取提交内容<br>顾名思义，只有完成了提交，才能在别的事务里面查询到<br>例如事务a，刚刚完成了一个DML操作但是还没有commit，这个时候另一个事务b是查不到这个数据（a自身可以）<br>除非是a进行了commit，清空了这次的日志，b事务才能查询到</p>
+<p>3.<code>repeatable read</code>：可重复读取&#x2F;读取的是幻影数据<br>比如事务a在进行着各种增删改的操作，这时候事务b开始，读取数据<br>会发现无论a怎么改动怎么提交，b所能查询到的仅仅是b在start的那一瞬间，a已经commit的数据<br>要想b读到新的数据，就要停止b事务，然后重开b事务<br>举个例子就是：每天晚上五点钟银行查库，职员们统计这个时间点的钱数，如果在这之后有人来存钱取钱<br>职员们统计的数字都不会变化（废话，一变全都乱套了）</p>
+<p>4.<code>serializable</code>，序列化<br>你不允许参加impart</p>
+<h6 id="隔离等级的修改"><a href="#隔离等级的修改" class="headerlink" title="隔离等级的修改"></a>隔离等级的修改</h6><ol>
+<li><p>进入mysql的ini文件中找到transaction-isolation&#x3D;?,修改隔离等级</p>
+</li>
+<li><p>修改当前会话(窗口)隔离级别:  使用语句<code>set session transaction_isolation =&#39;level&#39;;</code></p>
+</li>
+<li><p>修改当前系统隔离界别:使用语句 <code>set global transaction_insolation=&#39;level&#39;;</code></p>
+</li>
+<li><p>隔离等级在修改的时候要大写</p>
+</li>
+<li><p>获取事务隔离等级 select @@global.transaction_isolation(系统)</p>
+</li>
+<li><p>获取事务隔离等级select @@session.transaction_isolation;(当前会话)</p>
+</li>
+</ol>
+<h6 id="锁的概念-肥肠重要"><a href="#锁的概念-肥肠重要" class="headerlink" title="锁的概念( 肥肠重要 !)"></a>锁的概念( 肥肠重要 !)</h6><p>这个情况通常发生在两个窗口同时访问数据库的时候</p>
+<p>如果都没有发生修改操作,仅仅是查询一些数据,则不会有任何影响</p>
+<p>只有一方要修改数据的时候也是一样</p>
+<p><strong>但问题就出在,如果两个窗口都想要修改数据,怎么办</strong></p>
+<p>众所周知,<strong>每个窗口都自带一个窗口管理日志</strong>,在窗口单独进行commit和rollback的时候,都不会影响到彼此的窗口</p>
+<p>但如果一个窗口中进行了一次修改操作,则另一个窗口执行该操作的时候,就会进入<strong>锁等待状态(阻塞状态)</strong></p>
+<p>所谓锁等待状态,就是将要执行的指令暂时挂起在日志区中</p>
+<p>等到<strong>另一个窗口完成了当前事务,才会继续执行这个指令</strong>,具有延时性</p>
+<p>举个例子(假设AB两个窗口此刻都开启了事务)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据库中某个数据原本为88,开启AB两个窗口,事务隔离等级为read commited</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A窗口先进行了修改,修改为90</span><br><span class="line">此时A窗口日志中多了一个修改为90的操作,从A窗口读到的就是90</span><br><span class="line">B窗口中日志没有变化,他能读到的是提交以后的数据,所以B窗口读到的仍然是88</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在B窗口中进行这个操作  data=data-10;</span><br><span class="line">执行完以后,会发现B窗口暂时进入了挂起状态,无法输入指令(正常来说是这样的,但是鬼知道那个实验平台是怎么做到的)</span><br><span class="line">A中读取到的,仍然是90</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A进行提交操作以后,会发现B窗口页顺利完成这个延迟的指令</span><br><span class="line">这个指令,是要在A窗口结束提交以后,再进行修改的</span><br><span class="line">A窗口中进行读取得到的,是90</span><br><span class="line">B窗口首先能读到修改后的数据90,然后再执行-10的指令</span><br><span class="line">最后得到B窗口指令应该为80</span><br></pre></td></tr></table></figure>
+
+<p>简而言之就是:当修改内存冲突的时候,会先把命令挂起,等待其他窗口修改并且完成提交以后,才能进行这个指令的草坪做</p>
+<p>并且再挂起的阶段中,无法再该窗口执行指令</p>
+<p><strong>其实做一做go语言的开发就能发现,这其实就是lock,或者叫临界区的操作</strong></p>
+<p><strong>暂时阻塞其他窗口的动作,但不是屏蔽</strong></p>
+<h6 id="索引的创建和删除"><a href="#索引的创建和删除" class="headerlink" title="索引的创建和删除"></a>索引的创建和删除</h6><p>create index indexname on tablename(这个表里想要建立索引的字段名字)；<br>drop index indexname on tablename；<br><u>建议直接使用unique或者主键也会自动创建索引</u></p>
+<p>加快速率。。所以说数据结构还是很重要的对吧。。。<br>检查执行情况:解释查询语句在select语句前面加上一个explain</p>
+<p>索引可能会有失效的情况：比如<br>（1）模糊查询以%开头，没法通过索引<br>（2）or的时候会失效，则两边的条件的字段都要有索引</p>
+<p>索引的分类——-</p>
+<p>单一索引<br>复合索引<br>主键索引<br>唯一性索引</p>
+<h6 id="关于视图"><a href="#关于视图" class="headerlink" title="关于视图"></a>关于视图</h6><p>(1)视图的创建和删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create view emp_view as select * from emp;</span><br><span class="line">drop view emp_view;</span><br></pre></td></tr></table></figure>
+
+<p>用类似as快速创建表的方法,创建视图</p>
+<p>（2）利用视图对象进行增删改查，同时原表也会发生对应的变化；<br>语句和之前几乎是一模一样的？<br>视图的作用为：<strong>简化操作和开发，增强数据安全性，避免数据冗余，提高数据的逻辑独立性</strong><br>类似指针？更加方便我们进行操作，比如说这样一张联合视图<br> create view v as select e.name,i.apartment,i.salary from employee e join iden i on e.work&#x3D;i.id;</p>
+<p>我们对其中一个表的数据，也是可以进行修改的<br>update v set salary&#x3D;10 where name&#x3D;’ddss’;<br>（注意：Can not modify more than one base table through a join view）</p>
+<p><strong>视图就像是一个抽象出来的对象,里面都是指针,指向原来的表中的字段中的数据</strong></p>
+<p>但是这东西计算抽象出来也不能跨表同时修改,就像你平时也不能一次改几个对象是吧</p>
+<p>curd[^ curd]操作会更加方便和安全,只展示出我们需要的东西,相当于一个新的引用</p>
+<h6 id="关于DBA"><a href="#关于DBA" class="headerlink" title="关于DBA"></a>关于DBA</h6><p>DBA常用命令(大概率实际开发用不上)：<br>（1）创建用户 create user name identified by ‘passsword’;<br>（2）导出数据：mysqldump 数据库名&gt;导出文件目标地址 -uroot -p123456（在dos命令窗口而不是mysql的文件里面）<br>                          mysqldump 数据库名 表名&gt;导出文件目标地址 -uroot -p123456（导出指定的表）<br>（3）数据导入 ：用source<br>                          注意导入的sql文件需要和当前使用的数据库同名！<br>                          或者你在sql文件里面创建数据库？<br>其他的关于授权之类的<img src="C:\Users\98175\AppData\Roaming\Typora\typora-user-images\image-20230614201545246.png" alt="image-20230614201545246"></p>
+<p>权限列表主要有:<strong>read insert delete update</strong> <strong>select</strong>还有一个<strong>all</strong></p>
+<p>回收权限则可以用revoke</p>
+<p><img src="C:\Users\98175\AppData\Roaming\Typora\typora-user-images\image-20230614201804976.png" alt="image-20230614201804976"></p>
+<h6 id="数据库设计范式"><a href="#数据库设计范式" class="headerlink" title="数据库设计范式"></a>数据库设计范式</h6><p>（1）<strong>数据库第一范式</strong>:任何一张表都必须有主键，每个字段的原子性不可再分；<br>             然后主键唯一，方便我们干这干那的<br>             这个原子性主要是业务方面的，这个字段数据在业务上不可再分（比如联系方式里邮箱,电话别写在一起）</p>
+<p><strong>(其实就是不要产生业务上的混淆,并且一定要有主键)</strong></p>
+<p>（2）<strong>数据库第二范式</strong>:其他字段都要完全依赖主键，不能产生部分依赖；（单一主键一般不发生这个东西）<br>          因为字段只依赖主键的一部分，造成这个字段没有在主键的作用下区分开，造成冗余</p>
+<p>​          比如学生依赖学号,教师依赖工号</p>
+<p><strong>(其实就是用三张表处理多对多的问题)</strong></p>
+<pre><code>         比如师生关系表，如果我们把学号和工号一同作为主键（如果是同一张表，确实应该这样子区分关系）
+        学号     工号        。。。。。    教师
+</code></pre>
+<hr>
+<pre><code>        101       1                      a
+        102       1                      a
+      教师这个字段出现重复冗余
+
+        例如多对多用三张表处理（学生，老师，关系）
+</code></pre>
+<p>（3）<strong>数据库第三范式</strong>:非主键字段直接依赖主键，不要产生传递依赖；</p>
+<pre><code>      id        学生          班级编号         班级名字
+</code></pre>
+<hr>
+<pre><code>     班级编号依赖id，班级名字的区分依赖于班级编号，冗余了
+
+     这种一对多的 解决方法，用两张表，记得加上外键；
+</code></pre>
+<p>(<strong>2,用两张表处理一对多问题</strong>)</p>
+<p>范式处理冗余的目的其实是减少空间，但是不可避免地增加了表连接的时间成本<br>如果不处理的话其实也能降低一点sql的编写复杂度（都存在一张大表上了。。。。）<br>不过实际开发如果面对别的需求，比如学生这个表还会参与其他的活动，还是按照范式设计吧</p>
+<p> (4) 数据库设计第四范式:</p>
+<p> (5) 数据库设计 </p>
+<p>​       </p>
+<p>[^ curd]: 增删改查,程序员术语 create update research delete</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/03/operations/" data-id="cljm9b6te00001galfur0hye6" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/" rel="tag">database</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/03/myFirstBlog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">myFirstBlog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%A3%B0%E6%98%8E/" rel="tag">博客迁移声明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%A3%B0%E6%98%8E/" style="font-size: 10px;">博客迁移声明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/07/03/operations/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/03/myFirstBlog/">myFirstBlog</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
